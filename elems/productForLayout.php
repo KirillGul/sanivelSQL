@@ -14,8 +14,10 @@ $dateProd = date('Y-m-d', $page['modified_time']);
 //$groupid = $page['groupid'];
 $param = $page['param'];
 $description = $page['description'];
-$similar_products = $similar_products['similar_products'].'';
-$other_online_stores = $other_online_stores['other_online_stores'].'';
+if (isset($similar_products) AND $similar_products == TRUE) $similar_products = $similar_products['similar_products'].'';
+else $similar_products = '';
+if (isset($other_online_stores) AND $other_online_stores == TRUE) $other_online_stores = $other_online_stores['other_online_stores'].'';
+else $other_online_stores = '';
 $pID = $page['id'];
 
 $catID = $cat['id'];
@@ -226,9 +228,11 @@ if ('[KEYPART-26]' != FALSE) {
     $content .= '<hr color="white">';
 $content .= '</div>';
 
-if ($similar_products != '') {
+if (!empty($similar_products) AND $similar_products != '') {
     $similar_products = explode(';', rtrim($similar_products, ';'));
     $content .= '<p>Похожие товары</p>';
+
+    //var_dump($similar_products);
 
     foreach ($similar_products as $idPartProduct) {
         $query = "SELECT uri, name, price, oldprice, picture FROM product WHERE id='$idPartProduct'";
