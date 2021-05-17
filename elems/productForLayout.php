@@ -214,6 +214,96 @@ if ('[KEYPART-26]' != FALSE) {
         $content .= "со скидкой $raznica р. ";
     }
     $content .= "по цене $price р. Также ознакомьтесь с другими предложениям бренда $vendor.</p>";
+
+    if (!empty($similar_products) AND $similar_products != '') {
+        $similar_products = explode(';', rtrim($similar_products, ';'));
+        $content .= '<h3>Похожие товары</h3>';
+    
+        //var_dump($similar_products);
+    
+        foreach ($similar_products as $idPartProduct) {
+            $query = "SELECT uri, name, price, oldprice, picture FROM product WHERE id='$idPartProduct'";
+            $result = mysqli_query($link, $query) or die( mysqli_error($link) );
+            $pagePartProduct = mysqli_fetch_assoc($result);
+    
+            $pagePartProductURI = $pagePartProduct['uri'];
+            $pagePartProductName = $pagePartProduct['name'];
+            $pagePartProductPrice = $pagePartProduct['price'];
+            $pagePartProductOldprice = $pagePartProduct['oldprice'];
+            $pagePartProductPicture = $pagePartProduct['picture'];
+    
+            $content .= '<div class="tovar smtovar mtop10">';
+                if (isset($pagePartProductOldprice) AND $pagePartProductOldprice == TRUE) {
+                    $content .= '<div class="discount">';
+                }
+                if (isset($pagePartProductOldprice) AND $pagePartProductOldprice == TRUE) {
+                    $content .= '-';
+                    $content .= round((100*($pagePartProductOldprice -$pagePartProductPrice))/$pagePartProductOldprice, 0); 
+                    $content .= '%</div>';
+                }
+                $content .= '<div class="image camera">';
+                    $content .= "<a href=\"/$pagePartProductURI\">";
+                        $Part10temp = explode('&-&-&', $pagePartProductPicture);
+                        $pagePartProductPicture = $Part10temp[0];
+                        $content .= "<img src=\"$pagePartProductPicture\" onload=\"goodLoadImg(this);\" onerror=\"errLoadImg(this);\">";
+                    $content .= '</a>';
+                $content .= '</div>';
+                $content .= '<div class="name">';
+                    $content .= "<a href=\"/$pagePartProductURI\">$pagePartProductName</a>";
+                $content .= '</div>';
+                $content .= '<div>';
+                    $content .= '<span class="price">';
+                        $content .= number_format($pagePartProductPrice, 0, "", " ");
+                    $content .= ' р.</span>';
+                    if (isset($pagePartProductOldprice) AND $pagePartProductOldprice == TRUE) {
+                        $content .= "<span class=\"oldprice\">$pagePartProductOldprice р.</span>";
+                    }
+                $content .= '</div>';
+            $content .= '</div>';
+        }
+    
+        $content .= '<div class="clrb"></div>';
+        $content .= '<hr color="white">';
+    }
+    
+    /*$content .= '<p>Другие товары</p>';
+    <div class="gtt">
+        {REPEAT-4-4}
+        {PUNIQCATRANDKEYWORD}
+        <a href="[URL]">&gt;</a>
+        {/PUNIQCATRANDKEYWORD}
+        {/REPEAT}
+    </div>
+    <div class="clrb"></div>
+    <hr color="white">*/
+    
+    if ($other_online_stores != '') {
+        $other_online_stores = explode(';', rtrim($other_online_stores, ';'));
+        $content .= '<h3>Другие интернет-магазины:</h3>';
+        $content .= '<div class="mgs mtop10">';
+    
+        foreach ($other_online_stores as $idPartProduct) {
+            
+            $query = "SELECT uri, name FROM category WHERE id='$idPartProduct'";
+            $result = mysqli_query($link, $query) or die( mysqli_error($link) );
+            $pagePartProduct = mysqli_fetch_assoc($result);
+    
+            $pagePartProductURI = $pagePartProduct['uri'];
+            $pagePartProductName = $pagePartProduct['name'];
+    
+            
+                $content .= "<div class=\"mg\"><a href=\"/$pagePartProductURI/\">";
+                    $content .= "<img src=\"/images/logo/$pagePartProductURI.jpg\" alt=\"$pagePartProductName\" style=\"width:143px\" onload=\"goodLoadImg(this);\" onerror=\"errLoadImg(this);\">";
+                $content .= '</a></div>';
+            
+        }
+    
+        $content .= '</div>';
+        $content .= '<div class="clrb"></div>';
+        $content .= '<hr color="white">';
+    
+    }
+
     $content .= '<h2>Доставка</h2>';
     $content .= '<p>Доставка товара осуществляется транспортными компаниями до пунктов выдачи в вашем городе, а также по указанному при заказе адресу курьером. Итоговая стоимость доставки отобразится при оформлении заказа после заполния формы с адресом.</p>';
     $content .= '<h2>Отзывы</h2>';
@@ -224,98 +314,9 @@ if ('[KEYPART-26]' != FALSE) {
         $content .= $dateProd;
     $content .= '</p>';
     $content .= '</div>';
-    $content .= '<script>$(".description").readmore({maxHeight: 240, moreLink: "<a href=\"#\" class=\"moredescription\">+ Смотреть</a>", lessLink: "<a href=\"#\" class=\"moredescription\">- Скрыть</a>"});</script>';
+    $content .= '<script>$(".description").readmore({maxHeight: 700, moreLink: "<a href=\"#\" class=\"moredescription\">+ Смотреть</a>", lessLink: "<a href=\"#\" class=\"moredescription\">- Скрыть</a>"});</script>';
     $content .= '<hr color="white">';
 $content .= '</div>';
-
-if (!empty($similar_products) AND $similar_products != '') {
-    $similar_products = explode(';', rtrim($similar_products, ';'));
-    $content .= '<p>Похожие товары</p>';
-
-    //var_dump($similar_products);
-
-    foreach ($similar_products as $idPartProduct) {
-        $query = "SELECT uri, name, price, oldprice, picture FROM product WHERE id='$idPartProduct'";
-        $result = mysqli_query($link, $query) or die( mysqli_error($link) );
-        $pagePartProduct = mysqli_fetch_assoc($result);
-
-        $pagePartProductURI = $pagePartProduct['uri'];
-        $pagePartProductName = $pagePartProduct['name'];
-        $pagePartProductPrice = $pagePartProduct['price'];
-        $pagePartProductOldprice = $pagePartProduct['oldprice'];
-        $pagePartProductPicture = $pagePartProduct['picture'];
-
-        $content .= '<div class="tovar smtovar mtop10">';
-            if (isset($pagePartProductOldprice) AND $pagePartProductOldprice == TRUE) {
-                $content .= '<div class="discount">';
-            }
-            if (isset($pagePartProductOldprice) AND $pagePartProductOldprice == TRUE) {
-                $content .= '-';
-                $content .= round((100*($pagePartProductOldprice -$pagePartProductPrice))/$pagePartProductOldprice, 0); 
-                $content .= '%</div>';
-            }
-            $content .= '<div class="image camera">';
-                $content .= "<a href=\"/$pagePartProductURI\">";
-                    $Part10temp = explode('&-&-&', $pagePartProductPicture);
-                    $pagePartProductPicture = $Part10temp[0];
-                    $content .= "<img src=\"$pagePartProductPicture\" onload=\"goodLoadImg(this);\" onerror=\"errLoadImg(this);\">";
-                $content .= '</a>';
-            $content .= '</div>';
-            $content .= '<div class="name">';
-                $content .= "<a href=\"/$pagePartProductURI\">$pagePartProductName</a>";
-            $content .= '</div>';
-            $content .= '<div>';
-                $content .= '<span class="price">';
-                    $content .= number_format($pagePartProductPrice, 0, "", " ");
-                $content .= ' р.</span>';
-                if (isset($pagePartProductOldprice) AND $pagePartProductOldprice == TRUE) {
-                    $content .= "<span class=\"oldprice\">$pagePartProductOldprice р.</span>";
-                }
-            $content .= '</div>';
-        $content .= '</div>';
-    }
-
-    $content .= '<div class="clrb"></div>';
-    $content .= '<hr color="white">';
-}
-
-/*$content .= '<p>Другие товары</p>';
-<div class="gtt">
-    {REPEAT-4-4}
-    {PUNIQCATRANDKEYWORD}
-    <a href="[URL]">&gt;</a>
-    {/PUNIQCATRANDKEYWORD}
-    {/REPEAT}
-</div>
-<div class="clrb"></div>
-<hr color="white">*/
-
-if ($other_online_stores != '') {
-    $other_online_stores = explode(';', rtrim($other_online_stores, ';'));
-    $content .= '<p>Другие интернет-магазины:</p>';
-    $content .= '<div class="mgs mtop10">';
-
-    foreach ($other_online_stores as $idPartProduct) {
-        
-        $query = "SELECT uri, name FROM category WHERE id='$idPartProduct'";
-        $result = mysqli_query($link, $query) or die( mysqli_error($link) );
-        $pagePartProduct = mysqli_fetch_assoc($result);
-
-        $pagePartProductURI = $pagePartProduct['uri'];
-        $pagePartProductName = $pagePartProduct['name'];
-
-        
-            $content .= "<div class=\"mg\"><a href=\"/$pagePartProductURI/\">";
-                $content .= "<img src=\"/images/logo/$pagePartProductURI.jpg\" alt=\"$pagePartProductName\" style=\"width:143px\" onload=\"goodLoadImg(this);\" onerror=\"errLoadImg(this);\">";
-            $content .= '</a></div>';
-        
-    }
-
-    $content .= '</div>';
-    $content .= '<div class="clrb"></div>';
-    $content .= '<hr color="white">';
-
-}
 
 setcookie("cat", $catName, 0, "/cart/$prodURI");
 setcookie("productName", "$prodName $vendorCode", 0, "/cart/$prodURI");
