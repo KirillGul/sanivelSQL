@@ -27,20 +27,20 @@ $catURI = $cat['uri'];
 $request_uri = $_SERVER['REQUEST_URI'];
 
 //$title = "<title>$prodName $vendorCode, цена $price р., фото и отзывы</title>";
-$title = "<title>ᐉ Купить【$prodName $vendorCode по цене от $price РУБ】со скидкой по самой низкой цене | Сравнение цен и акции на $prodName $pID</title>";
+$title = "<title>ᐉ Купить【$prodName $vendorCode по цене от $price РУБ】со скидкой по самой низкой цене | &#9989; Сравнение цен и акции</title>";
 
 //<meta name=\"description\" content=\"$prodName $vendorCode $oldpriceSuf за $price р. в интернет-магазине $catName. Купите недорого с доставкой. Смотрите фото, описание и характеристики.\">
 $description = "
-    <meta name=\"description\" content=\"&#11088;&#11088;&#11088;&#11088;&#11088; Скидки до 70% каждый день! 100% Гарантия качества от официальных магазинов! Быстрый и безопасный онлайн шоппинг с $hostHTTP. Выбыраейте $prodName $vendorCode $oldpriceSuf за $price руб. - фото, описание и характеристики\">
+    <meta name=\"description\" content=\"&#11088;&#11088;&#11088;&#11088;&#11088; Скидки до 70% каждый день! В интернет магазине $catName - 100% Гарантия качества! Быстрый и безопасный онлайн шоппинг с $hostHTTP. Выбыраейте $prodName $vendorCode $oldpriceSuf за $price руб. - фото, описание и характеристики\">
     <link rel='canonical' href='$prefhostHTTP$hostHTTP$request_uri'>
     <meta name=\"twitter:card\" content=\"summary_large_image\">
     <meta name=\"twitter:site\" content=\"@$hostHTTP\">
 	<meta name=\"twitter:creator\" content=\"@$hostHTTP\">
 	<meta name=\"twitter:title\" content=\"$prodName $vendorCode | $hostHTTP\">
-	<meta name=\"twitter:description\" content=\"&#11088;&#11088;&#11088;&#11088;&#11088; Скидки до 70% каждый день! 100% Гарантия качества от официальных магазинов! Быстрый и безопасный онлайн шоппинг с $hostHTTP. Выбыраейте $prodName $vendorCode $oldpriceSuf за $price руб. - фото, описание и характеристики\">
+	<meta name=\"twitter:description\" content=\"&#11088;&#11088;&#11088;&#11088;&#11088; Скидки до 70% каждый день! В интернет магазине $catName - 100% Гарантия качества! Быстрый и безопасный онлайн шоппинг с $hostHTTP. Выбыраейте $prodName $vendorCode $oldpriceSuf за $price руб. - фото, описание и характеристики\">
 	<meta name=\"twitter:image\" content=\"$picture\">
 	<meta property=\"og:title\" content=\"$prodName $vendorCode | $hostHTTP\">
-	<meta property=\"og:description\" content=\"&#11088;&#11088;&#11088;&#11088;&#11088; Скидки до 70% каждый день! 100% Гарантия качества от официальных магазинов! Быстрый и безопасный онлайн шоппинг с $hostHTTP. Выбыраейте $prodName $vendorCode $oldpriceSuf за $price руб. - фото, описание и характеристики\">
+	<meta property=\"og:description\" content=\"&#11088;&#11088;&#11088;&#11088;&#11088; Скидки до 70% каждый день! В интернет магазине $catName - 100% Гарантия качества! Быстрый и безопасный онлайн шоппинг с $hostHTTP. Выбыраейте $prodName $vendorCode $oldpriceSuf за $price руб. - фото, описание и характеристики\">
 	<meta property=\"og:image\" content=\"$picture\">
 	<meta property=\"og:type\" content=\"product\">
 	<meta property=\"og:url\" content=\"$prefhostHTTP$hostHTTP$request_uri\">
@@ -49,7 +49,7 @@ $description = "
 $itemscope = "
     <span itemscope itemtype=\"http://schema.org/Product\">
         <meta itemprop=\"name\" content=\"$prodName $vendorCode\">
-        <meta itemprop=\"description\" content=\"&#11088;&#11088;&#11088;&#11088;&#11088; Скидки до 70% каждый день! 100% Гарантия качества от официальных магазинов! Быстрый и безопасный онлайн шоппинг с $hostHTTP. Выбыраейте $prodName $vendorCode $oldpriceSuf за $price руб. - фото, описание и характеристики\">
+        <meta itemprop=\"description\" content=\"&#11088;&#11088;&#11088;&#11088;&#11088; Скидки до 70% каждый день! В интернет магазине $catName - 100% Гарантия качества! Быстрый и безопасный онлайн шоппинг с $hostHTTP. Выбыраейте $prodName $vendorCode $oldpriceSuf за $price руб. - фото, описание и характеристики\">
         <meta itemprop=\"image\" content=\"$picture\">
         <meta itemprop=\"brand\" content=\"$vendor\">
         <meta itemprop=\"sku\" content=\"$vendorCode\">
