@@ -21,7 +21,7 @@
             <div class="logotype"><?php if(!empty($logo)) echo $logo;  //категория и товар?></div>
             <div class="searchForm">
                 <form action="/search" method="POST">
-                    <input type="text" name="searchText" placeholder="Я хочу найти...">
+                    <input type="text" name="searchText" placeholder="Я хочу найти..."<?php if (isset($_POST['searchText'])) {echo "value=\"{$_POST['searchText']}\"";}?>>
                     <button type="submit"></button>
                 </form>
             </div>

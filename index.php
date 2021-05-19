@@ -29,7 +29,9 @@ if ($uri == '/') { //если главная
     $flag = 'main';
 } else { //если не главная
     $uriArr = explode ("/", $uri);
-    if (count($uriArr) == 1 AND checkURI($link, $uriArr[0])) { //если первый уровень
+    if (count($uriArr) == 1 AND $uriArr[0] === 'search') { //если первый уровень
+        $flag = 'search';
+    } elseif (count($uriArr) == 1 AND checkURI($link, $uriArr[0])) { //если первый уровень
         $flag = 'category';
     } elseif (count($uriArr) == 2) { //если второй уровень
         if (checkURI($link, $uriArr[0]) AND checkURI($link, "{$uriArr[0]}/{$uriArr[1]}", 'product')) {
@@ -77,6 +79,10 @@ switch ($flag) {
         break;
     case 'cpa':
         include 'elems/cartForLayout.php';
+        include 'elems/layout.php';
+        break;
+    case 'search':
+        include 'elems/searchForLayout.php';
         include 'elems/layout.php';
         break;
     default:
