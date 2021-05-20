@@ -42,10 +42,11 @@ if ($uri == '/') { //если главная
     } elseif (count($uriArr) == 4 AND $uriArr[0] === 'cart' AND 
                 ($uriArr[3] === 'photoinproduct' || $uriArr[3] === 'morephoto' || 
                 $uriArr[3] === 'buybutton' || $uriArr[3] === 'readmore' || $uriArr[3] === 'othercolors' || $uriArr[3] === 'othersizes')) {
-            if (checkURI($link, $uriArr[1], 'category', 'name') AND checkURI($link, "{$uriArr[1]}/{$uriArr[2]}", 'product')) {
+            if (checkURI($link, $uriArr[1], 'category', 'uri') AND checkURI($link, "{$uriArr[1]}/{$uriArr[2]}", 'product')) {
                 $flag = 'cpa';
             } else {
-                $flag = '404';
+                //$flag = '404';
+                var_dump(checkURI($link, $uriArr[1], 'category', 'uri'));
             }
     } else { //если больше второго уровня
         $flag = '404';
