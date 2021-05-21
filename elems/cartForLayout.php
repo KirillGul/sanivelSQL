@@ -3,7 +3,7 @@ $uriRequest = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $segmentsRequ = explode('/', trim($uriRequest, '/'));
 		
 $uriReferer = $_SERVER['HTTP_REFERER'];
-$segmentsRef = explode('http://', $uriReferer);
+$segmentsRef = explode('https://', $uriReferer);
 
 $uri = explode('?', $_COOKIE["link"]);
 

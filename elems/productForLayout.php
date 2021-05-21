@@ -294,7 +294,7 @@ if ('[KEYPART-26]' != FALSE) {
     
             
                 $content .= "<div class=\"mg\"><a href=\"/$pagePartProductURI/\">";
-                    $content .= "<img src=\"/images/logo/$pagePartProductURI.jpg\" alt=\"$pagePartProductName\" style=\"width:143px\" onload=\"goodLoadImg(this);\" onerror=\"errLoadImg(this);\">";
+                    $content .= "<img src=\"/images/logo/$pagePartProductName.jpg\" alt=\"$pagePartProductName\" style=\"width:143px\" onload=\"goodLoadImg(this);\" onerror=\"errLoadImg(this);\">";
                 $content .= '</a></div>';
             
         }
