@@ -1,5 +1,5 @@
 User-agent: *
 Disallow: /cart/*
 Disallow: /search
-Host: sanivelsql
+Host: sanivel.ru
 Sitemap: https://sanivel.ru/sitemap.xml
