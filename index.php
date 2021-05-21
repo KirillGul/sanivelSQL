@@ -25,6 +25,15 @@ $uri = trim(preg_replace('#(\?.*)?#', '', $_SERVER['REQUEST_URI']), '/'); //от
 if (empty($uri)) //если после отразания ни чего нет, то главная
     $uri = '/';
 
+//убираем www
+$uriP = explode ('.', $_SERVER['HTTP_HOST']);
+if ($uriP[0] == 'www') {
+    $uriLocation = $prefhostHTTP.$uriP[1].$_SERVER['REQUEST_URI'];
+    $uriLocation = trim($uriLocation, '/');
+    header("Location: $uriLocation", true, 301);
+    //header("Location: $uriLocation");
+}
+
 if ($uri == '/') { //если главная
     $flag = 'main';
 } else { //если не главная
@@ -45,8 +54,7 @@ if ($uri == '/') { //если главная
             if (checkURI($link, $uriArr[1], 'category', 'uri') AND checkURI($link, "{$uriArr[1]}/{$uriArr[2]}", 'product')) {
                 $flag = 'cpa';
             } else {
-                //$flag = '404';
-                var_dump(checkURI($link, $uriArr[1], 'category', 'uri'));
+                $flag = '404';
             }
     } else { //если больше второго уровня
         $flag = '404';

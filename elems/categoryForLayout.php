@@ -22,7 +22,29 @@ $result = mysqli_query($link, $query) or die(mysqli_error($link));
 $count = mysqli_fetch_assoc($result)['count']; //кол-во товара
 $pagesCount = ceil($count/$notesOnPage); //кол-во страниц для категории
 
+//для Canonical и meta
+if ($list == 1) {
+    if (isset($pagesCount) AND $pagesCount > 0) {
+        $pNext = $list+1;
+        $meta = "<link rel=\"next\" href=\"$prefhostHTTP$hostHTTP/$catURI/?page=$pNext\">";
+    }
+    $meta .= "<link rel=\"canonical\" href=\"$prefhostHTTP$hostHTTP/$catURI/\">";
+} else {
+    $meta = '<meta name="robots" content="noindex, nofollow">';
 
+    $pPrev = $list-1;
+    if ($pPrev == 1) {
+        $meta .= "<link rel=\"prev\" href=\"$prefhostHTTP$hostHTTP/$catURI/\">";    
+    } else {
+        $meta .= "<link rel=\"prev\" href=\"$prefhostHTTP$hostHTTP/$catURI/?page=$pPrev\">";
+    }
+
+    $pNext = $list+1;
+    $meta .= "<link rel=\"next\" href=\"$prefhostHTTP$hostHTTP/$catURI/?page=$pNext\">";
+
+    $meta .= "<link rel=\"canonical\" href=\"$prefhostHTTP$hostHTTP/$catURI/\">";    
+}
+    
 $title = "<title>Интернет-магазин $catName: каталог с фото и ценами</title>";
 $description = "<meta name=\"description\" content=\"Каталог интернет-магазина $catName. Цены, фото, описания товаров и скидки.\">";
 $logo = "<a href=\"/$catURI/\"><img src=\"/images/logo/$catName.jpg\"></a>";
@@ -40,7 +62,11 @@ $countProduct = "<p class=\"gcnt\">Всего: $count шт.</p>";
 $pag = '<div class="pag"><ul>';
     if ($list != 1) {
         $prev = $list - 1;
-        $pag .= "<li><a href=\"?page=$prev\"><span><</span></a></li>";
+        if ($prev == 1) {
+            $pag .= "<li><a href=\"$prefhostHTTP$hostHTTP/$catURI/\"><span><</span></a></li>";
+        } else {
+            $pag .= "<li><a href=\"$prefhostHTTP$hostHTTP/$catURI/?page=$prev\"><span><</span></a></li>";
+        }
     }
 
     $pageMax = $list + 5;
@@ -48,12 +74,17 @@ $pag = '<div class="pag"><ul>';
         if ($i == $list) {
            $class = ' class="active"';
         } else $class = '';
-        $pag .= "<li><a href=\"?page=$i\"$class><span>$i</span></a></li> ";
+
+        if ($i == 1) {
+            $pag .= "<li><a href=\"$prefhostHTTP$hostHTTP/$catURI/\"$class><span>$i</span></a></li> ";
+        } else {
+            $pag .= "<li><a href=\"$prefhostHTTP$hostHTTP/$catURI/?page=$i\"$class><span>$i</span></a></li> ";
+        }
      }
 
      if ($list != $pagesCount) {
         $next = $list + 1;
-        $pag .= "<li><a href=\"?page=$next\"$class><span>></span></a></li> ";
+        $pag .= "<li><a href=\"$prefhostHTTP$hostHTTP/$catURI/?page=$next\"$class><span>></span></a></li> ";
      }
 $pag .= '</ul></div>';
 
