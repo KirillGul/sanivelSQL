@@ -26,6 +26,8 @@ function uriLocation ($REQUEST_URI, $HTTP_HOST) {
     if (strstr($HTTP_HOST, 'www.')) {
         $arr['uriWWW'] = explode ('.', $HTTP_HOST)[0]; //копируем www - www
         $arr['uriHOST'] = explode ('.', $HTTP_HOST)[1]; //копируем host без WWW - sanivelsql
+        $domen = explode ('.', $HTTP_HOST)[2]; //копируем домен
+        $arr['uriHOST'] = $arr['uriHOST'].'.'.$domen;
     } else {
         $arr['uriHOST'] = $HTTP_HOST; //копируем host без WWW - sanivelsql
     }
