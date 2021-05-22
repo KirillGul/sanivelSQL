@@ -18,23 +18,70 @@ function checkURI ($link, $uri, $table='category', $param='uri') { //запро�
     return mysqli_fetch_assoc($result)['count']; //Преобразуем то, что отдала нам база из объекта в нормальный массив с одним значением и значение count
 }
 
-///////////////////////////////////////////////////////////////////////////////////
+function uriLocation ($REQUEST_URI, $HTTP_HOST) {
+    $arr = [];
+    $arr['uriFULL'] = $REQUEST_URI; //URI: - atlas-for-man?page=11
+    $arr['uriMini'] = preg_replace('#(\?.*)?#', '', $REQUEST_URI); //отрезаем в URI: всё что после (?) - atlas-for-man
+    $arr['uriQuery'] = strstr($REQUEST_URI, '?'); //отрезаем URI: всё что после (?) - ?page=11
+    if (strstr($HTTP_HOST, 'www.')) {
+        $arr['uriWWW'] = explode ('.', $HTTP_HOST)[0]; //копируем www - www
+        $arr['uriHOST'] = explode ('.', $HTTP_HOST)[1]; //копируем host без WWW - sanivelsql
+    } else {
+        $arr['uriHOST'] = $HTTP_HOST; //копируем host без WWW - sanivelsql
+    }
 
-$uri = trim(preg_replace('#(\?.*)?#', '', $_SERVER['REQUEST_URI']), '/'); //отрезаем в URI: всё что после (?) и убираем (/)
-
-if (empty($uri)) //если после отразания ни чего нет, то главная
-    $uri = '/';
-
-//убираем www
-$uriP = explode ('.', $_SERVER['HTTP_HOST']);
-if ($uriP[0] == 'www') {
-    $uriLocation = $prefhostHTTP.$uriP[1].$_SERVER['REQUEST_URI'];
-    $uriLocation = trim($uriLocation, '/');
-    header("Location: $uriLocation", true, 301);
-    //header("Location: $uriLocation");
+    return $arr;
 }
 
-if ($uri == '/') { //если главная
+///////////////////////////////////////////////////////////////////////////////////
+$uriLocation = '';
+
+$arr = uriLocation ($_SERVER['REQUEST_URI'], $_SERVER['HTTP_HOST']);
+
+//убираем www
+if (isset($arr['uriWWW']) AND $arr['uriWWW'] === 'www') {
+    $uriLocation = $prefhostHTTP.$arr['uriHOST'].$arr['uriFULL'];
+    //$uriLocation = trim($uriLocation, '/');
+    //header("Location: $uriLocation", true, 301);
+}
+
+//убираем слеш если есть
+if (!empty($uriLocation)) {
+    $arr = uriLocation ($arr['uriFULL'], $arr['uriHOST']);
+    //убираем слеш
+    if (empty($arr['uriMini'])) //если после отразания ни чего нет, то главная
+        $uri = '/';
+    elseif (substr($arr['uriFULL'], -1) === '/') {
+        $arr['uriFULL'] = rtrim($arr['uriFULL'], '/');
+        $uriLocation = $prefhostHTTP.$arr['uriHOST'].$arr['uriFULL'];
+        //header("Location: $uriLocation", true, 301);
+    }
+} else {    
+    if (empty($arr['uriMini'])) //если после отразания ни чего нет, то главная
+        $uri = '/';
+    elseif (substr($arr['uriFULL'], -1) === '/') {
+        $arr['uriFULL'] = rtrim($arr['uriFULL'], '/');
+        $uriLocation = $prefhostHTTP.$arr['uriHOST'].$arr['uriFULL'];
+        //header("Location: $uriLocation", true, 301);
+    }
+}
+
+echo "<pre>";
+print_r($uriLocation);
+echo "</pre>";
+
+//убираем слеш
+/*if (empty($uri)) //если после отразания ни чего нет, то главная
+    $uri = '/';
+elseif (substr($_SERVER['REQUEST_URI'], -1) === '/') {
+//elseif (substr($_SERVER['REQUEST_URI'], -1) === '/' AND strstr($_SERVER['REQUEST_URI'], '?') == '') {
+    //$uriLocation = $prefhostHTTP.$hostHTTP.$_SERVER['REQUEST_URI'];
+    $uriLocation = $prefhostHTTP.$hostHTTP.'/'.$uri.$uriQuery;
+    $uriLocation = rtrim($uriLocation, '/');
+    header("Location: $uriLocation", true, 301);
+}*/
+
+/*if ($uri == '/') { //если главная
     $flag = 'main';
 } else { //если не главная
     $uriArr = explode ("/", $uri);
@@ -99,4 +146,4 @@ switch ($flag) {
         header("HTTP/1.0 404 Not Found");
         include 'elems/layout_404.php';
         break;
-}
+}*/

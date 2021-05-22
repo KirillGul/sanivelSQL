@@ -4,6 +4,7 @@ $catID = $page['id'];
 $catName = ltrim($page['name']);
 $catURI = $page['uri'];
 
+
 if (isset($_GET['page'])) {
     $list = $_GET['page'];
 } else {
@@ -28,13 +29,13 @@ if ($list == 1) {
         $pNext = $list+1;
         $meta = "<link rel=\"next\" href=\"$prefhostHTTP$hostHTTP/$catURI/?page=$pNext\">";
     }
-    $meta .= "<link rel=\"canonical\" href=\"$prefhostHTTP$hostHTTP/$catURI/\">";
+    $meta .= "<link rel=\"canonical\" href=\"$prefhostHTTP$hostHTTP/$catURI\">";
 } else {
     $meta = '<meta name="robots" content="noindex, nofollow">';
 
     $pPrev = $list-1;
     if ($pPrev == 1) {
-        $meta .= "<link rel=\"prev\" href=\"$prefhostHTTP$hostHTTP/$catURI/\">";    
+        $meta .= "<link rel=\"prev\" href=\"$prefhostHTTP$hostHTTP/$catURI\">";    
     } else {
         $meta .= "<link rel=\"prev\" href=\"$prefhostHTTP$hostHTTP/$catURI/?page=$pPrev\">";
     }
@@ -42,12 +43,12 @@ if ($list == 1) {
     $pNext = $list+1;
     $meta .= "<link rel=\"next\" href=\"$prefhostHTTP$hostHTTP/$catURI/?page=$pNext\">";
 
-    $meta .= "<link rel=\"canonical\" href=\"$prefhostHTTP$hostHTTP/$catURI/\">";    
+    $meta .= "<link rel=\"canonical\" href=\"$prefhostHTTP$hostHTTP/$catURI\">";    
 }
     
 $title = "<title>Интернет-магазин $catName: каталог с фото и ценами</title>";
 $description = "<meta name=\"description\" content=\"Каталог интернет-магазина $catName. Цены, фото, описания товаров и скидки.\">";
-$logo = "<a href=\"/$catURI/\"><img src=\"/images/logo/$catName.jpg\"></a>";
+$logo = "<a href=\"/$catURI\"><img src=\"/images/logo/$catName.jpg\"></a>";
 
 $arrCity=array(1=>'Абакан','Альметьевск','Ангарск','Армавир','Архангельск','Астрахань','Балаково','Балашиха','Барнаул','Белгород','Березники','Бийск','Братск','Брянск','Великий Новгород','Владивосток','Владикавказ','Владимир','Волгоград','Волгодонск','Волжский','Вологда','Воронеж','Грозный','Дзержинск','Екатеринбург','Зеленоград','Златоуст','Иваново','Ижевск','Йошкар-Ола','Иркутск','Казань','Калининград','Калуга','Каменск-Уральский','Кемерово','Керчь','Киров','Ковров','Коломна','Колпино','Комсомольск-на-Амуре','Копейск','Королёв','Кострома','Краснодар','Красноярск','Курган','Курск','Липецк','Люберцы','Магнитогорск','Майкоп','Махачкала','Миасс','Москва','Мурманск','Мытищи','Набережные Челны','Нальчик','Находка','Нефтеюганск','Нижневартовск','Нижнекамск','Нижний Новгород','Нижний Тагил','Новокузнецк','Новороссийск','Новосибирск','Новочеркасск','Норильск','Одинцово','Омск','Орел','Оренбург','Орск','Пенза','Пермь','Петрозаводск','Петропавловск-Камчатский','Подольск','Прокопьевск','Псков','Пятигорск','Ростов-на-Дону','Рубцовск','Рыбинск','Рязань','Салават','Самара','Санкт-Петербург','Саранск','Саратов','Севастополь','Северодвинск','Симферополь','Смоленск','Сочи','Ставрополь','Старый Оскол','Стерлитамак','Сургут','Сызрань','Сыктывкар','Таганрог','Тамбов','Тверь','Тольятти','Томск','Тула','Тюмень','Улан-Удэ','Ульяновск','Уссурийск','Уфа','Хабаровск','Химки','Чебоксары','Челябинск','Череповец','Чита','Шахты','Электросталь','Энгельс','Южно-Сахалинск','Якутск','Ярославль');
 if (empty($_COOKIE["city"])) {
@@ -63,7 +64,7 @@ $pag = '<div class="pag"><ul>';
     if ($list != 1) {
         $prev = $list - 1;
         if ($prev == 1) {
-            $pag .= "<li><a href=\"$prefhostHTTP$hostHTTP/$catURI/\"><span><</span></a></li>";
+            $pag .= "<li><a href=\"$prefhostHTTP$hostHTTP/$catURI\"><span><</span></a></li>";
         } else {
             $pag .= "<li><a href=\"$prefhostHTTP$hostHTTP/$catURI/?page=$prev\"><span><</span></a></li>";
         }
@@ -76,7 +77,7 @@ $pag = '<div class="pag"><ul>';
         } else $class = '';
 
         if ($i == 1) {
-            $pag .= "<li><a href=\"$prefhostHTTP$hostHTTP/$catURI/\"$class><span>$i</span></a></li> ";
+            $pag .= "<li><a href=\"$prefhostHTTP$hostHTTP/$catURI\"$class><span>$i</span></a></li> ";
         } else {
             $pag .= "<li><a href=\"$prefhostHTTP$hostHTTP/$catURI/?page=$i\"$class><span>$i</span></a></li> ";
         }

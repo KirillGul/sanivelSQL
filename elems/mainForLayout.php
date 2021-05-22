@@ -22,7 +22,7 @@ foreach ($data as $columns) { //вывод категорий через $conten
     $name = ltrim($columns['name']);
 
     $content .= '<div class="mg">';
-    $content .= "<a href=\"/$uri/\">";
+    $content .= "<a href=\"/$uri\">";
     $content .= "<img src=\"/images/logo/$name.jpg\" alt=\"$name\" onload=\"goodLoadImg(this);\" onerror=\"errLoadImg(this);\">";
     $content .= '</a></div>'; 
 }
