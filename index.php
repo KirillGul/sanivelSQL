@@ -56,17 +56,6 @@ if (substr($arr['uriFULL'], -1) === '/' AND $arr['uriMINI'] !== '/') {
     $flagURI = 1;
 }
 
-/*if (substr($arr['uriQuery'], -1) === '/') {
-    $arr['uriQuery'] = rtrim($arr['uriQuery'], '/');
-    $uriLocation = $prefhostHTTP.$arr['uriHOST'].$arr['uriMINI'].$arr['uriQuery'];
-    $flagURI = 1;
-}*/
-
-/*echo "<pre>";
-//print_r($arr['uriQuery']);
-print_r($uriLocation);
-echo "</pre>";*/
-
 //если было www или / делаем перенаправление
 if ($flagURI == 1) {
     header("Location: $uriLocation", true, 301);

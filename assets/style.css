@@ -25,7 +25,8 @@ header ul li a{color:#48d; text-decoration:none;}
 .pag ul li a:hover{background:#59f;color:white;}
 .pag ul li a.noactive:hover{background:white;color:#33f;cursor:default;}*/
 .pag ul li span{font-size:18px;padding:5px 9px;display:block;}
-.pag ul li span.active{color:white;background:#59f;cursor:pointer;}
+.pag ul li.active{color:white;background:#59f;cursor:pointer;}
+.pag ul li.active span{color:white;}
 .pag ul li span:hover{background:#59f;color:white;}
 .pag ul li span.noactive:hover{background:white;color:#33f;cursor:default;}
 .tovar{width:210px;margin:20px 40px 33px 0;float:left;text-align:left;display:inline-block;position:relative;overflow-x: hidden}

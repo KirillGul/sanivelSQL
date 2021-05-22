@@ -76,15 +76,15 @@ $pag = '<div class="pag"><ul>';
         } else $class = '';
 
         if ($i == 1) {
-            $pag .= "<li><a href=\"$prefhostHTTP$hostHTTP/$catURI\"$class><span>$i</span></a></li> ";
+            $pag .= "<li$class><a href=\"$prefhostHTTP$hostHTTP/$catURI\"><span>$i</span></a></li> ";
         } else {
-            $pag .= "<li><a href=\"$prefhostHTTP$hostHTTP/$catURI?page=$i\"$class><span>$i</span></a></li> ";
+            $pag .= "<li$class><a href=\"$prefhostHTTP$hostHTTP/$catURI?page=$i\"><span>$i</span></a></li> ";
         }
     }
 
      if ($list != $pagesCount) {
         $next = $list + 1;
-        $pag .= "<li><a href=\"$prefhostHTTP$hostHTTP/$catURI?page=$next\"$class><span>></span></a></li> ";
+        $pag .= "<li$class><a href=\"$prefhostHTTP$hostHTTP/$catURI?page=$next\"><span>></span></a></li> ";
      }
 $pag .= '</ul></div>';
 
