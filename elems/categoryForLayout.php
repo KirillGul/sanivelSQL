@@ -4,9 +4,8 @@ $catID = $page['id'];
 $catName = ltrim($page['name']);
 $catURI = $page['uri'];
 
-
 if (isset($_GET['page'])) {
-    $list = $_GET['page'];
+    $list = trim($_GET['page'], '/');
 } else {
     $list = 1;
 }
@@ -66,7 +65,7 @@ $pag = '<div class="pag"><ul>';
         if ($prev == 1) {
             $pag .= "<li><a href=\"$prefhostHTTP$hostHTTP/$catURI\"><span><</span></a></li>";
         } else {
-            $pag .= "<li><a href=\"$prefhostHTTP$hostHTTP/$catURI/?page=$prev\"><span><</span></a></li>";
+            $pag .= "<li><a href=\"$prefhostHTTP$hostHTTP/$catURI?page=$prev\"><span><</span></a></li>";
         }
     }
 
@@ -79,13 +78,13 @@ $pag = '<div class="pag"><ul>';
         if ($i == 1) {
             $pag .= "<li><a href=\"$prefhostHTTP$hostHTTP/$catURI\"$class><span>$i</span></a></li> ";
         } else {
-            $pag .= "<li><a href=\"$prefhostHTTP$hostHTTP/$catURI/?page=$i\"$class><span>$i</span></a></li> ";
+            $pag .= "<li><a href=\"$prefhostHTTP$hostHTTP/$catURI?page=$i\"$class><span>$i</span></a></li> ";
         }
-     }
+    }
 
      if ($list != $pagesCount) {
         $next = $list + 1;
-        $pag .= "<li><a href=\"$prefhostHTTP$hostHTTP/$catURI/?page=$next\"$class><span>></span></a></li> ";
+        $pag .= "<li><a href=\"$prefhostHTTP$hostHTTP/$catURI?page=$next\"$class><span>></span></a></li> ";
      }
 $pag .= '</ul></div>';
 
@@ -128,3 +127,7 @@ foreach ($data as $tovar) {
     if ($catClear % 4 == 0) { $content .= '<div class="clrb"></div>'; } 
     $catClear++;
 }
+
+/*echo "<pre>";
+print_r($other_online_stores);
+echo "</pre>";*/
