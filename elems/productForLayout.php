@@ -84,11 +84,11 @@ if (isset($oldprice) AND $oldprice == TRUE) {
 }
 
     $content .= '<div class="bigimg camera">';
-        $content .= "<a rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/photoinproduct/', '_blank'); return false\" data-href='/cart/$prodURI/photoinproduct/' class=\"pointer outli\">";
+        $content .= "<a rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/photoinproduct', '_blank'); return false\" data-href='/cart/$prodURI/photoinproduct' class=\"pointer outli\">";
             $content .= "<img src=\"$picture\" alt=\"$prodName $vendorCode\" onload=\"goodLoadImg(this);\" onerror=\"errLoadImg(this);\">";
         $content .= '</a>';
         $content .= '<p class="readmore">';
-            $content .= "<a rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/morephoto/', '_blank'); return false\" data-href='/cart/$prodURI/morephoto/' class=\"pointer outli\">";
+            $content .= "<a rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/morephoto', '_blank'); return false\" data-href='/cart/$prodURI/morephoto' class=\"pointer outli\">";
                 $content .= '<span>ВСЕ ФОТО</span>';
             $content .= '</a>';
         $content .= '</p>';
@@ -106,7 +106,7 @@ if (isset($oldprice) AND $oldprice == TRUE) {
             $content .= ' р.';
         $content .= '</div>';
         $content .= '<div class="buybutton">';
-            $content .= "<a rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/buybutton/', '_blank'); return false\" data-href='</cart/$prodURI/buybutton/' class=\"pointer outli\">";
+            $content .= "<a rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/buybutton', '_blank'); return false\" data-href='</cart/$prodURI/buybutton' class=\"pointer outli\">";
                 $content .= '<span >КУПИТЬ</span>';
             $content .= '</a>';
         $content .= '</div>';
@@ -137,7 +137,7 @@ if ('[KEYPART-26]' != FALSE) {
             $content .= "<p>PID: $groupid</p>";
         }
         $content .= '<p class="readmore">';
-            $content .= "<a rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/readmore/', '_blank'); return false\" data-href='/cart/$prodURI/readmore/' class=\"pointer outli\">";
+            $content .= "<a rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/readmore', '_blank'); return false\" data-href='/cart/$prodURI/readmore' class=\"pointer outli\">";
                 $content .= '<span>ПОДРОБНЕЕ</span>';
             $content .= '</a>';
         $content .= '</p>';
@@ -167,12 +167,12 @@ if ('[KEYPART-26]' != FALSE) {
                     $content .= $arr[1];
                     if ($arr[0] == 'Цвет') { 
                         $content .= '<span class="othprms">';
-                            $content .= "<a rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/othercolors/', '_blank'); return false\" data-href='/cart/$prodURI/othercolors/' class=\"pointer outli\">+все цвета</a>";
+                            $content .= "<a rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/othercolors', '_blank'); return false\" data-href='/cart/$prodURI/othercolors' class=\"pointer outli\">+все цвета</a>";
                         $content .= '</span>';
                     }
                     if ($arr[0] == 'Размер') { 
                         $content .= '<span class="othprms">';
-                            $content .= "<a rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/othercolors/', '_blank'); return false\" data-href='/cart/$prodURI/othercolors/' class=\"pointer outli\">+все размеры</a>";
+                            $content .= "<a rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/othercolors', '_blank'); return false\" data-href='/cart/$prodURI/othercolors' class=\"pointer outli\">+все размеры</a>";
                         $content .= '</span>';
                     }
                 $content .= '</td>';
@@ -192,12 +192,12 @@ if ('[KEYPART-26]' != FALSE) {
                         $content .= $arr1[1];
                         if ($arr1[0] == 'Цвет') {
                             $content .= '<span class="othprms">';
-                                $content .= "<a rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/othercolors/', '_blank'); return false\" data-href='/cart/$prodURI/othercolors/' class=\"pointer outli\">+все цвета</a>";
+                                $content .= "<a rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/othercolors', '_blank'); return false\" data-href='/cart/$prodURI/othercolors' class=\"pointer outli\">+все цвета</a>";
                             $content .= '</span>';
                         }
                         if ($arr1[0] == 'Размер') {
                             $content .= '<span class="othprms">';
-                                $content .= "<a rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/othercolors/', '_blank'); return false\" data-href='/cart/$prodURI/othercolors/' class=\"pointer outli\">+все размеры</a>";
+                                $content .= "<a rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/othercolors', '_blank'); return false\" data-href='/cart/$prodURI/othercolors' class=\"pointer outli\">+все размеры</a>";
                             $content .= '</span>';
                         }
                     $content .= '</td>';
