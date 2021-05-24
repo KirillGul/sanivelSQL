@@ -23,6 +23,7 @@ $pID = $page['id'];
 $catID = $cat['id'];
 $catName = ltrim($cat['name']);
 $catURI = $cat['uri'];
+$catCPAID = $cat[$hostHTTP];
 
 $request_uri = $_SERVER['REQUEST_URI'];
 
@@ -323,6 +324,7 @@ setcookie("cat", $catName, 0, "/cart/$prodURI");
 setcookie("productName", "$prodName $vendorCode", 0, "/cart/$prodURI");
 $prodURL = $page['produrl'];
 setcookie("link", $prodURL, 0, "/cart/$prodURI");
+setcookie("catCPAID", $catCPAID, 0, "/cart/$prodURI");
 setcookie("productImage", $picture, 0, "/cart/$prodURI");
 
 /*echo "<pre>";
