@@ -1,0 +1,9 @@
+ОК - font-family: 'Source Sans Pro', sans-serif;
+ОК - readmore.js убрать только для товара
+ОК - readmore.js сделать async
+ОК - кеширования в htaccess
+
+нет alt в картинках (проверка https://validator.w3.org)
+переделать название картинки как uri
+посмотреть на href в теге a у товара
+item prop и др.

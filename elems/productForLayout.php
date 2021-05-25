@@ -27,6 +27,8 @@ $catCPAID = $cat[$hostHTTP];
 
 $request_uri = $_SERVER['REQUEST_URI'];
 
+$ReadMoreJS = '<script src="/assets/readmore.js" async></script>';
+
 //$title = "<title>$prodName $vendorCode, цена $price р., фото и отзывы</title>";
 $title = "<title>ᐉ Купить【$prodName $vendorCode по цене от $price РУБ】со скидкой по самой низкой цене | &#9989; Сравнение цен и акции</title>";
 
