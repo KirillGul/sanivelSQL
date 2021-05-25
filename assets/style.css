@@ -35,7 +35,7 @@ header ul li a{color:#48d; text-decoration:none;}
 .pag ul li span.noactive:hover{background:white;color:#33f;cursor:default;}
 .tovar{width:210px;margin:20px 40px 33px 0;float:left;text-align:left;display:inline-block;position:relative;overflow-x: hidden}
 .tovar .discount{top:0;left:0;font-size:18px;background-color:yellow;display:inline-block;position:absolute;color:black;font-weight:bold;z-index:777;padding:7px;opacity:.8;text-align:center;border-radius: 10%;-moz-border-radius: 10%;-webkit-border-radius: 10%;-khtml-border-radius: 10%;}
-.tovar .camera, .camera{background:url(/templ/camera.png) left no-repeat;}
+.tovar .camera, .camera{background:url(camera.png) left no-repeat;}
 .tovar .image{width:210px;height:210px;}
 .tovar .image:hover{filter:saturate(180%) brightness(1.05);}
 .tovar .image:before{height:100%; display: inline-block;vertical-align: middle;}

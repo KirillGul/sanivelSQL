@@ -1,17 +1,23 @@
 RewriteEngine On
 
+<IfModule mod_expires.c>
+ExpiresActive On
+#кэшировать изображения один месяц
+  ExpiresByType image/x-icon "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/gif "access plus 30 days"
+  #кэшировать файлы-иконки один год
+  ExpiresByType image/ico "access plus 365 days"
+  #кэшировать css, javascript файлы одну неделю
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType text/javascript "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType application/x-javascript "access plus 7 days"
+</IfModule>
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !^/assets/
 RewriteCond %{REQUEST_URI} !^/admin/
 RewriteCond %{REQUEST_URI} !^/images/
 RewriteRule .* index.php
-
-<IfModule mod_expires.c>
-ExpiresActive On
-ExpiresByType application/javascript "access plus 5 days"
-ExpiresByType text/javascript "access plus 5 days"
-ExpiresByType text/css "access plus 5 days"
-ExpiresByType image/gif "access plus 5 days"
-ExpiresByType image/jpeg "access plus 5 days"
-ExpiresByType image/png "access plus 5 days"
-</IfModule>

@@ -13,7 +13,7 @@ $picture = $page['picture'];
 $dateProd = date('Y-m-d', $page['modified_time']);
 //$groupid = $page['groupid'];
 $param = $page['param'];
-$description = $page['description'];
+$descriptionProduct = $page['description'];
 if (isset($similar_products) AND $similar_products == TRUE) $similar_products = $similar_products['similar_products'].'';
 else $similar_products = '';
 if (isset($other_online_stores) AND $other_online_stores == TRUE) $other_online_stores = $other_online_stores['other_online_stores'].'';
@@ -66,7 +66,7 @@ $itemscope = "
     </span>
 ";
 
-$logo = "<a href=\"/$catURI/\"><img src=\"/images/logo/$catName.jpg\"></a>";
+$logo = "<a href=\"/$catURI/\"><img src=\"/images/logo/$catURI.jpg\" alt=\"$catName\"></a>";
 
 $arrCity=array(1=>'Абакан','Альметьевск','Ангарск','Армавир','Архангельск','Астрахань','Балаково','Балашиха','Барнаул','Белгород','Березники','Бийск','Братск','Брянск','Великий Новгород','Владивосток','Владикавказ','Владимир','Волгоград','Волгодонск','Волжский','Вологда','Воронеж','Грозный','Дзержинск','Екатеринбург','Зеленоград','Златоуст','Иваново','Ижевск','Йошкар-Ола','Иркутск','Казань','Калининград','Калуга','Каменск-Уральский','Кемерово','Керчь','Киров','Ковров','Коломна','Колпино','Комсомольск-на-Амуре','Копейск','Королёв','Кострома','Краснодар','Красноярск','Курган','Курск','Липецк','Люберцы','Магнитогорск','Майкоп','Махачкала','Миасс','Москва','Мурманск','Мытищи','Набережные Челны','Нальчик','Находка','Нефтеюганск','Нижневартовск','Нижнекамск','Нижний Новгород','Нижний Тагил','Новокузнецк','Новороссийск','Новосибирск','Новочеркасск','Норильск','Одинцово','Омск','Орел','Оренбург','Орск','Пенза','Пермь','Петрозаводск','Петропавловск-Камчатский','Подольск','Прокопьевск','Псков','Пятигорск','Ростов-на-Дону','Рубцовск','Рыбинск','Рязань','Салават','Самара','Санкт-Петербург','Саранск','Саратов','Севастополь','Северодвинск','Симферополь','Смоленск','Сочи','Ставрополь','Старый Оскол','Стерлитамак','Сургут','Сызрань','Сыктывкар','Таганрог','Тамбов','Тверь','Тольятти','Томск','Тула','Тюмень','Улан-Удэ','Ульяновск','Уссурийск','Уфа','Хабаровск','Химки','Чебоксары','Челябинск','Череповец','Чита','Шахты','Электросталь','Энгельс','Южно-Сахалинск','Якутск','Ярославль');
 if (empty($_COOKIE["city"])) {
@@ -87,11 +87,11 @@ if (isset($oldprice) AND $oldprice == TRUE) {
 }
 
     $content .= '<div class="bigimg camera">';
-        $content .= "<a rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/photoinproduct', '_blank'); return false\" data-href='/cart/$prodURI/photoinproduct' class=\"pointer outli\">";
-            $content .= "<img src=\"$picture\" alt=\"$prodName $vendorCode\" onload=\"goodLoadImg(this);\" onerror=\"errLoadImg(this);\">";
+        $content .= "<a href=\"#\" rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/photoinproduct', '_blank'); return false\" data-href='/cart/$prodURI/photoinproduct' class=\"pointer outli\">";
+            $content .= "<img src=\"$picture\" alt=\"Картинка - $prodName $vendorCode\" onload=\"goodLoadImg(this);\" onerror=\"errLoadImg(this);\">";
         $content .= '</a>';
         $content .= '<p class="readmore">';
-            $content .= "<a rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/morephoto', '_blank'); return false\" data-href='/cart/$prodURI/morephoto' class=\"pointer outli\">";
+            $content .= "<a href=\"#\" rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/morephoto', '_blank'); return false\" data-href='/cart/$prodURI/morephoto' class=\"pointer outli\">";
                 $content .= '<span>ВСЕ ФОТО</span>';
             $content .= '</a>';
         $content .= '</p>';
@@ -109,7 +109,7 @@ if (isset($oldprice) AND $oldprice == TRUE) {
             $content .= ' р.';
         $content .= '</div>';
         $content .= '<div class="buybutton">';
-            $content .= "<a rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/buybutton', '_blank'); return false\" data-href='</cart/$prodURI/buybutton' class=\"pointer outli\">";
+            $content .= "<a href=\"#\" rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/buybutton', '_blank'); return false\" data-href='</cart/$prodURI/buybutton' class=\"pointer outli\">";
                 $content .= '<span >КУПИТЬ</span>';
             $content .= '</a>';
         $content .= '</div>';
@@ -140,7 +140,7 @@ if ('[KEYPART-26]' != FALSE) {
             $content .= "<p>PID: $groupid</p>";
         }
         $content .= '<p class="readmore">';
-            $content .= "<a rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/readmore', '_blank'); return false\" data-href='/cart/$prodURI/readmore' class=\"pointer outli\">";
+            $content .= "<a href=\"#\" rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/readmore', '_blank'); return false\" data-href='/cart/$prodURI/readmore' class=\"pointer outli\">";
                 $content .= '<span>ПОДРОБНЕЕ</span>';
             $content .= '</a>';
         $content .= '</p>';
@@ -149,7 +149,7 @@ if ('[KEYPART-26]' != FALSE) {
         $content .= '<div class="ya-share2" data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,viber,whatsapp,telegram" data-counter=""></div>';
     $content .= '</div>';
     $content .= '<div class="clrb"></div>';
-    $content .= '<a name="others"></a>';
+    $content .= '<a id="others"></a>';
     $content .= '<div class="description">';
     
     if ($param == TRUE) {
@@ -170,12 +170,12 @@ if ('[KEYPART-26]' != FALSE) {
                     $content .= $arr[1];
                     if ($arr[0] == 'Цвет') { 
                         $content .= '<span class="othprms">';
-                            $content .= "<a rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/othercolors', '_blank'); return false\" data-href='/cart/$prodURI/othercolors' class=\"pointer outli\">+все цвета</a>";
+                            $content .= "<a href=\"#\" rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/othercolors', '_blank'); return false\" data-href='/cart/$prodURI/othercolors' class=\"pointer outli\">+все цвета</a>";
                         $content .= '</span>';
                     }
                     if ($arr[0] == 'Размер') { 
                         $content .= '<span class="othprms">';
-                            $content .= "<a rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/othercolors', '_blank'); return false\" data-href='/cart/$prodURI/othercolors' class=\"pointer outli\">+все размеры</a>";
+                            $content .= "<a href=\"#\" rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/othercolors', '_blank'); return false\" data-href='/cart/$prodURI/othercolors' class=\"pointer outli\">+все размеры</a>";
                         $content .= '</span>';
                     }
                 $content .= '</td>';
@@ -195,12 +195,12 @@ if ('[KEYPART-26]' != FALSE) {
                         $content .= $arr1[1];
                         if ($arr1[0] == 'Цвет') {
                             $content .= '<span class="othprms">';
-                                $content .= "<a rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/othercolors', '_blank'); return false\" data-href='/cart/$prodURI/othercolors' class=\"pointer outli\">+все цвета</a>";
+                                $content .= "<a href=\"#\" rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/othercolors', '_blank'); return false\" data-href='/cart/$prodURI/othercolors' class=\"pointer outli\">+все цвета</a>";
                             $content .= '</span>';
                         }
                         if ($arr1[0] == 'Размер') {
                             $content .= '<span class="othprms">';
-                                $content .= "<a rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/othercolors', '_blank'); return false\" data-href='/cart/$prodURI/othercolors' class=\"pointer outli\">+все размеры</a>";
+                                $content .= "<a href=\"#\" rel=\"nofollow\" onclick=\"window.open('/cart/$prodURI/othercolors', '_blank'); return false\" data-href='/cart/$prodURI/othercolors' class=\"pointer outli\">+все размеры</a>";
                             $content .= '</span>';
                         }
                     $content .= '</td>';
@@ -210,8 +210,8 @@ if ('[KEYPART-26]' != FALSE) {
         $content .= '<div class="clrb"></div>';
     }
     $content .= '<h2>Описание</h2>';
-    if ($description != FALSE) {
-        $content .= "<p>$description</p>";
+    if ($descriptionProduct != FALSE) {
+        $content .= "<p>$descriptionProduct</p>";
     }
     $content .= "<p>В интернет-магазине \"$catName\" вы можете купить $prodName $vendorCode недорого";
     if (isset($oldprice) AND $oldprice == TRUE) {
@@ -249,7 +249,7 @@ if ('[KEYPART-26]' != FALSE) {
                     $content .= "<a href=\"/$pagePartProductURI\">";
                         $Part10temp = explode('&-&-&', $pagePartProductPicture);
                         $pagePartProductPicture = $Part10temp[0];
-                        $content .= "<img src=\"$pagePartProductPicture\" onload=\"goodLoadImg(this);\" onerror=\"errLoadImg(this);\">";
+                        $content .= "<img src=\"$pagePartProductPicture\" alt=\"Картинка - $pagePartProductName\" onload=\"goodLoadImg(this);\" onerror=\"errLoadImg(this);\">";
                     $content .= '</a>';
                 $content .= '</div>';
                 $content .= '<div class="name">';
@@ -267,7 +267,7 @@ if ('[KEYPART-26]' != FALSE) {
         }
     
         $content .= '<div class="clrb"></div>';
-        $content .= '<hr color="white">';
+        $content .= '<hr style="color:white">';
     }
     
     /*$content .= '<p>Другие товары</p>';
@@ -297,14 +297,14 @@ if ('[KEYPART-26]' != FALSE) {
     
             
                 $content .= "<div class=\"mg\"><a href=\"/$pagePartProductURI/\">";
-                    $content .= "<img src=\"/images/logo/$pagePartProductName.jpg\" alt=\"$pagePartProductName\" style=\"width:143px\" onload=\"goodLoadImg(this);\" onerror=\"errLoadImg(this);\">";
+                    $content .= "<img src=\"/images/logo/$pagePartProductURI.jpg\" alt=\"$pagePartProductName\" style=\"width:143px\" onload=\"goodLoadImg(this);\" onerror=\"errLoadImg(this);\">";
                 $content .= '</a></div>';
             
         }
     
         $content .= '</div>';
         $content .= '<div class="clrb"></div>';
-        $content .= '<hr color="white">';
+        $content .= '<hr style="color:white">';
     
     }
 
@@ -319,7 +319,7 @@ if ('[KEYPART-26]' != FALSE) {
     $content .= '</p>';
     $content .= '</div>';
     $content .= '<script>$(".description").readmore({maxHeight: 700, moreLink: "<a href=\"#\" class=\"moredescription\">+ Смотреть</a>", lessLink: "<a href=\"#\" class=\"moredescription\">- Скрыть</a>"});</script>';
-    $content .= '<hr color="white">';
+    $content .= '<hr style="color:white">';
 $content .= '</div>';
 
 setcookie("cat", $catName, 0, "/cart/$prodURI");

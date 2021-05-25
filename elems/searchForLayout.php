@@ -43,7 +43,7 @@ function search ($link, $query) {
                             $text .= "<a href=\"/$pagePartProductURI\">";
                                 $Part10temp = explode('&-&-&', $pagePartProductPicture);
                                 $pagePartProductPicture = $Part10temp[0];
-                                $text .= "<img src=\"$pagePartProductPicture\" onload=\"goodLoadImg(this);\" onerror=\"errLoadImg(this);\">";
+                                $text .= "<img src=\"$pagePartProductPicture\" alt=\"Картинка - $pagePartProductName $pagePartProductVendorcode\" onload=\"goodLoadImg(this);\" onerror=\"errLoadImg(this);\">";
                             $text .= '</a>';
                         $text .= '</div>';
                         $text .= '<div class="name">';
