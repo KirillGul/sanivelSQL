@@ -7,6 +7,8 @@ ini_set('display_errors', 'on');
 //MD5
 $passwordAdmin = '202cb962ac59075b964b07152d234b70';
 
+$meta2 = "";
+
 $prefhostHTTP = 'http://';
 $hostHTTP = $_SERVER['HTTP_HOST'];
 
