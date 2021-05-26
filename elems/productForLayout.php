@@ -329,6 +329,7 @@ setcookie("link", $prodURL, 0, "/cart/$prodURI");
 setcookie("catCPAID", $catCPAID, 0, "/cart/$prodURI");
 setcookie("productImage", $picture, 0, "/cart/$prodURI");
 
+
 /*echo "<pre>";
-print_r($other_online_stores);
+print_r($_SERVER);
 echo "</pre>";*/
