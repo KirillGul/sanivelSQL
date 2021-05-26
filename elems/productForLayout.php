@@ -267,7 +267,7 @@ if ('[KEYPART-26]' != FALSE) {
         }
     
         $content .= '<div class="clrb"></div>';
-        $content .= '<hr style="color:white">';
+        $content .= '<hr>';
     }
     
     /*$content .= '<p>Другие товары</p>';
@@ -304,7 +304,7 @@ if ('[KEYPART-26]' != FALSE) {
     
         $content .= '</div>';
         $content .= '<div class="clrb"></div>';
-        $content .= '<hr style="color:white">';
+        $content .= '<hr>';
     
     }
 
@@ -319,7 +319,7 @@ if ('[KEYPART-26]' != FALSE) {
     $content .= '</p>';
     $content .= '</div>';
     $content .= '<script>$(".description").readmore({maxHeight: 700, moreLink: "<a href=\"#\" class=\"moredescription\">+ Смотреть</a>", lessLink: "<a href=\"#\" class=\"moredescription\">- Скрыть</a>"});</script>';
-    $content .= '<hr style="color:white">';
+    $content .= '<hr>';
 $content .= '</div>';
 
 setcookie("cat", $catName, 0, "/cart/$prodURI");
@@ -328,7 +328,6 @@ $prodURL = $page['produrl'];
 setcookie("link", $prodURL, 0, "/cart/$prodURI");
 setcookie("catCPAID", $catCPAID, 0, "/cart/$prodURI");
 setcookie("productImage", $picture, 0, "/cart/$prodURI");
-
 
 /*echo "<pre>";
 print_r($_SERVER);
