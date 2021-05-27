@@ -60,7 +60,7 @@ if ($flagIP == 0) { //если не определился IP (обыно, на�
     if (isset($infoMeta['error'])) {
         $metaCartRefrash .= "<META HTTP-EQUIV=REFRESH CONTENT=\"0; URL=$k1\">";
     } else {
-        print_r($infoMeta);
+        //print_r($infoMeta);
         $metaCartRefrash .= "<META HTTP-EQUIV=REFRESH CONTENT=\"0; URL={$infoMeta[0]}\">";
     }
 }

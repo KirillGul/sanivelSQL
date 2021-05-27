@@ -27,7 +27,7 @@ $catCPAID = $cat[$hostHTTP];
 
 $request_uri = $_SERVER['REQUEST_URI'];
 
-$ReadMoreJS = '<script src="/assets/readmore.js" async></script>';
+$ReadMoreJS = '<script src="/assets/readmore.js" async="async"></script>';
 
 //$title = "<title>$prodName $vendorCode, цена $price р., фото и отзывы</title>";
 $title = "<title>ᐉ Купить【$prodName $vendorCode по цене от $price РУБ】со скидкой по самой низкой цене | &#9989; Сравнение цен и акции</title>";
@@ -144,8 +144,8 @@ if ('[KEYPART-26]' != FALSE) {
                 $content .= '<span>ПОДРОБНЕЕ</span>';
             $content .= '</a>';
         $content .= '</p>';
-        $content .= '<script src="http://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>';
-        $content .= '<script src="http://yastatic.net/share2/share.js"></script>';
+        //$content .= '<script src="http://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>';
+        $content .= '<script src="https://yastatic.net/share2/share.js"></script>';        
         $content .= '<div class="ya-share2" data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,viber,whatsapp,telegram" data-counter=""></div>';
     $content .= '</div>';
     $content .= '<div class="clrb"></div>';
@@ -322,12 +322,12 @@ if ('[KEYPART-26]' != FALSE) {
     $content .= '<hr>';
 $content .= '</div>';
 
-setcookie("cat", $catName, 0, "/cart/$prodURI");
-setcookie("productName", "$prodName $vendorCode", 0, "/cart/$prodURI");
+setcookie("cat", $catName, 0, "/cart/$prodURI", '', true);
+setcookie("productName", "$prodName $vendorCode", 0, "/cart/$prodURI", '', true);
 $prodURL = $page['produrl'];
-setcookie("link", $prodURL, 0, "/cart/$prodURI");
-setcookie("catCPAID", $catCPAID, 0, "/cart/$prodURI");
-setcookie("productImage", $picture, 0, "/cart/$prodURI");
+setcookie("link", $prodURL, 0, "/cart/$prodURI", '', true);
+setcookie("catCPAID", $catCPAID, 0, "/cart/$prodURI", '', true);
+setcookie("productImage", $picture, 0, "/cart/$prodURI", '', true);
 
 /*echo "<pre>";
 print_r($_SERVER);

@@ -10,8 +10,8 @@
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-    <?php if(!empty($ReadMoreJS)) echo $ReadMoreJS; //для товара?>
-    <script src="/assets/scripts.js" async></script>
+    <?php if(!empty($ReadMoreJS)) echo $ReadMoreJS; //для товара?> 
+    <script src="/assets/scripts.js" async="async"></script>    
     <link rel="stylesheet" href="/assets/style.css">
     <?= $title ?>
     <?php if(!empty($description)) echo $description; ?>

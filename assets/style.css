@@ -59,7 +59,7 @@ header ul li a{color:#48d; text-decoration:none;}
 .product .notes .price{font-size:40px;	margin:10px 0;}
 .product .notes .oldprice span.old{text-decoration:line-through;font-size:22px;}
 .product .notes .oldprice span.disc{font-size:22px;margin-left:10px;padding:2px 6px;background:#9df;color:white;}
-.product .notes ul.adv{margin:16px 0;}
+.product .notes ul.adv{margin:16px 0;display:inline !important;}
 .product .notes ul.adv li {list-style-type: none;color:#48d;;margin:1px 0;font-size:18px;}
 .product .notes ul.adv li:before {content: '✔ ';}
 .product .notes ul.adv li.active{color:#48d;}
