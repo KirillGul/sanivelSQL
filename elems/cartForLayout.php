@@ -26,7 +26,7 @@ $HTTP_REFERER = urlencode($_SERVER['HTTP_REFERER']); //нужно для Telepor
 $ip_addr = $_SERVER['REMOTE_ADDR']; //нужно для Teleport API
 
 //если можно узнать IP то Teleport иначе по старинке
-if (!empty($ip_addr) AND $ip_addr != '0.0.0.0') {
+if (!empty($ip_addr) AND $ip_addr != '0.0.0.0'  AND $ip_addr != '127.0.0.1') {
     $flagIP = 1;
     $ip_addr = 'ip_addr='.$ip_addr;
     //$k = "http://ip-api.com/php/188.191.25.3";
@@ -43,14 +43,14 @@ if (!empty($ip_addr) AND $ip_addr != '0.0.0.0') {
 
 //если один сайт (обыно, надёжно)
     //$k1 = "{$uriArrProdCPA[0]}?subid={$uriNoHttp[1]}&subid1={$segmentsRequ[3]}&{$uriArrProdCPA[1]}";
-    //$metaCartRefrash .= "<META HTTP-EQUIV=REFRESH CONTENT=\"7600; URL=$k1\">";
+    //$metaCartRefrash .= "<META HTTP-EQUIV=REFRESH CONTENT=\"0; URL=$k1\">";
 //если один сайт (Teleport API)
 
 //если несколько сайтов (Teleport API и обычный)
 if ($flagIP == 0) { //если не определился IP (обыно, надёжно)
     //если несколько сайтов
     $k1 = "$uriCPA0123g{$_COOKIE['catCPAID']}/?subid={$uriNoHttp[1]}&subid1={$segmentsRequ[3]}&{$uriArrProdCPA[1]}";
-    $metaCartRefrash .= "<META HTTP-EQUIV=REFRESH CONTENT=\"7600; URL=$k1\">";
+    $metaCartRefrash .= "<META HTTP-EQUIV=REFRESH CONTENT=\"0; URL=$k1\">";
 } else {
     //если несколько сайтов новая метода
     $k1 = "$uriCPA0123g{$_COOKIE['catCPAID']}/?subid={$uriNoHttp[1]}&subid1={$segmentsRequ[3]}&{$uriArrProdCPA[1]}";
@@ -58,10 +58,10 @@ if ($flagIP == 0) { //если не определился IP (обыно, на�
     $infoMeta = file_get_contents($k);
     $infoMeta = json_decode($infoMeta, true);
     if (isset($infoMeta['error'])) {
-        $metaCartRefrash .= "<META HTTP-EQUIV=REFRESH CONTENT=\"7600; URL=$k1\">";
+        $metaCartRefrash .= "<META HTTP-EQUIV=REFRESH CONTENT=\"0; URL=$k1\">";
     } else {
         print_r($infoMeta);
-        $metaCartRefrash .= "<META HTTP-EQUIV=REFRESH CONTENT=\"7600; URL={$infoMeta[0]}\">";
+        $metaCartRefrash .= "<META HTTP-EQUIV=REFRESH CONTENT=\"0; URL={$infoMeta[0]}\">";
     }
 }
 
@@ -88,5 +88,5 @@ $content .= '</div>';
 $content .= '<div style="widht:100%;height:300px;"></div>';
 
 /*echo "<pre>";
-print_r($page);
+print_r($k1);
 echo "</pre>";*/

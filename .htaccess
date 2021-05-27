@@ -1,16 +1,44 @@
-<ifModule mod_headers.c>
-    Header append Cache-Control "public, no-transform"
-    <FilesMatch "\.(flv|swf|ico|gif|jpg|jpeg|png|css|js|text|bmp|psd|css|js|woff|woff2)$">
-        Header set Cache-Control "max-age=172000"
-    </FilesMatch>
-    <FilesMatch "\.(pl|php|cgi|spl|scgi|fcgi|html)$">
-        Header unset Cache-Control
+Options All -ExecCGI -Indexes -Includes +FollowSymLinks
+
+# Указываем браузеру кэшировать статику
+<IfModule mod_expires.c> 
+    <FilesMatch \.(png|gif|jpg|css|js|bmp|jpeg|ico|swf|flv|pdf|tiff|woff|woff2)$>
+        ExpiresActive On
+        ExpiresDefault "access plus 14 days"
     </FilesMatch>
 </IfModule>
 
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_URI} !^/assets/
-RewriteCond %{REQUEST_URI} !^/admin/
-RewriteCond %{REQUEST_URI} !^/images/
-RewriteRule .* index.php
+# Если mod_expires на сервере выключен
+<IfModule !mod_expires.c> 
+    <IfModule mod_headers.c>
+        Header append Cache-Control "public, no-transform"
+        <FilesMatch "\.(flv|swf|ico|gif|jpg|jpeg|png|css|js|text|bmp|psd|css|js|woff|woff2)$">
+            Header set Cache-Control "max-age=1209600"
+        </FilesMatch>
+        <FilesMatch "\.(pl|php|cgi|spl|scgi|fcgi|html)$">
+            Header unset Cache-Control
+        </FilesMatch>
+    </IfModule>
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} !^/assets/
+    RewriteCond %{REQUEST_URI} !^/admin/
+    RewriteCond %{REQUEST_URI} !^/images/
+    RewriteRule .* index.php
+</IfModule>
+
+DirectoryIndex index.php
+
+<IfModule mod_setenvif.c>
+	SetEnv TZ Europe/Moscow
+</IfModule>
+ServerSignature Off
+
+#Сжатие - вставлять в конце
+#нужно вкл. mod_deflate и mod_filter
+<ifModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript
+</ifModule>
