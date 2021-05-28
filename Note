@@ -5,29 +5,13 @@
 
 ОК - нет alt в картинках (проверка https://validator.w3.org)
 ОК - переделать название картинки как uri
-посмотреть на href в теге a у товара
-item prop и др.
+ОК - посмотреть на href в теге a у товара
+ОК - og, twitter удалил
+Не трогал, посмотреть индекс гугл, в яндекс хорошо - item prop
 
-<ifModule mod_headers.c>
-    Header append Cache-Control "public, no-transform"
-    <FilesMatch "\.(flv|swf|ico|gif|jpg|jpeg|png|css|js|text|bmp|psd)$">
-        Header set Cache-Control "max-age=172000"
-    </FilesMatch>
-    <FilesMatch "\.(pl|php|cgi|spl|scgi|fcgi|html)$">
-        Header unset Cache-Control
-    </FilesMatch>
-</IfModule>
-
-<ifModule mod_expires.c>
-    ExpiresActive On
-    ExpiresDefault "access plus 5 seconds"
-    ExpiresByType image/x-icon "access plus 172000 seconds"
-    ExpiresByType image/jpeg "access plus 172000 seconds"
-    ExpiresByType image/png "access plus 172000 seconds"
-    ExpiresByType image/gif "access plus 172000 seconds"
-    ExpiresByType application/x-shockwave-flash "access plus 172000 seconds"
-    ExpiresByType text/css "access plus 172000 seconds"
-    ExpiresByType text/javascript "access plus 172000 seconds"
-    ExpiresByType application/javascript "access plus 172000 seconds"
-    ExpiresByType application/x-javascript "access plus 172000 seconds"
-</ifModule>
+<meta name=\"twitter:card\" content=\"summary_large_image\">
+<meta name=\"twitter:site\" content=\"@$hostHTTP\">
+<meta name=\"twitter:creator\" content=\"@$hostHTTP\">
+<meta name=\"twitter:title\" content=\"ᐉ Купить【$prodName $vendorCode по цене от $price РУБ】со скидкой по самой низкой цене | &#9989; Сравнение цен и акции\">
+<meta name=\"twitter:description\" content=\"&#11088;&#11088;&#11088;&#11088;&#11088; Скидки до 70% каждый день! В интернет магазине $catName - 100% Гарантия качества! Быстрый и безопасный онлайн шоппинг с $hostHTTP. Выбыраейте $prodName $vendorCode $oldpriceSuf за $price руб. - фото, описание и характеристики\">
+<meta name=\"twitter:image\" content=\"$picture\">

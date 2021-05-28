@@ -36,16 +36,13 @@ $title = "<title>ᐉ Купить【$prodName $vendorCode по цене от $pr
 $description = "
     <meta name=\"description\" content=\"&#11088;&#11088;&#11088;&#11088;&#11088; Скидки до 70% каждый день! В интернет магазине $catName - 100% Гарантия качества! Быстрый и безопасный онлайн шоппинг с $hostHTTP. Выбыраейте $prodName $vendorCode $oldpriceSuf за $price руб. - фото, описание и характеристики\">
     <link rel='canonical' href='$prefhostHTTP$hostHTTP$request_uri'>
-    <meta name=\"twitter:card\" content=\"summary_large_image\">
-    <meta name=\"twitter:site\" content=\"@$hostHTTP\">
-	<meta name=\"twitter:creator\" content=\"@$hostHTTP\">
-	<meta name=\"twitter:title\" content=\"$prodName $vendorCode | $hostHTTP\">
-	<meta name=\"twitter:description\" content=\"&#11088;&#11088;&#11088;&#11088;&#11088; Скидки до 70% каждый день! В интернет магазине $catName - 100% Гарантия качества! Быстрый и безопасный онлайн шоппинг с $hostHTTP. Выбыраейте $prodName $vendorCode $oldpriceSuf за $price руб. - фото, описание и характеристики\">
-	<meta name=\"twitter:image\" content=\"$picture\">
-	<meta property=\"og:title\" content=\"$prodName $vendorCode | $hostHTTP\">
-	<meta property=\"og:description\" content=\"&#11088;&#11088;&#11088;&#11088;&#11088; Скидки до 70% каждый день! В интернет магазине $catName - 100% Гарантия качества! Быстрый и безопасный онлайн шоппинг с $hostHTTP. Выбыраейте $prodName $vendorCode $oldpriceSuf за $price руб. - фото, описание и характеристики\">
+
+	<meta property=\"og:title\" content=\"ᐉ Купить【$prodName $vendorCode по цене от $price РУБ】со скидкой по самой низкой цене | &#9989; Сравнение цен и акции\">
+    <meta property=\"og:type\" content=\"product\">
+    <meta property=\"og:site_name\" content=\"$hostHTTP\">
+	<meta property=\"og:description\" content=\"\">
 	<meta property=\"og:image\" content=\"$picture\">
-	<meta property=\"og:type\" content=\"product\">
+    <meta property=\"og:image:type\" content=\"image/jpeg\">
 	<meta property=\"og:url\" content=\"$prefhostHTTP$hostHTTP$request_uri\">
 ";
 
