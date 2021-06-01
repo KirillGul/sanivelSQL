@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php if(!empty($meta)) echo $meta; //для категорий?>
     <?php if(!empty($meta2)) echo $meta2; //для категорий?>
-    <link rel="icon" href="<?php echo $prefhostHTTP.$hostHTTP; ?>/assets/favicon.svg" type=" image/svg+xml"> 
+    <link rel="icon" href="<?php echo $prefhostHTTP.$hostHTTP; ?>/assets/favicon.svg" type=" image/svg+xml">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
     <?php if(!empty($ReadMoreJS)) echo $ReadMoreJS; //для товара?> 
     <script src="/assets/scripts.js" async="async"></script>    
