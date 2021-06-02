@@ -48,7 +48,4 @@ ServerSignature Off
     AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript
 </ifModule>
 
-<<<<<<< HEAD
 #Redirect 301 / https://sanivel.ru/
-=======
->>>>>>> cf0ed8b05b47a7fbe913fa085ce730fd5885cb6d
