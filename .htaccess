@@ -23,6 +23,9 @@ Options All -ExecCGI -Indexes -Includes +FollowSymLinks
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
+ #   RewriteCond %{HTTP_HOST} sanivel.sql
+ #   RewriteRule (.*) https://sanivel.ru/$1 [R=301,L]
+
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_URI} !^/assets/
     RewriteCond %{REQUEST_URI} !^/admin/
@@ -31,6 +34,8 @@ Options All -ExecCGI -Indexes -Includes +FollowSymLinks
 </IfModule>
 
 DirectoryIndex index.php
+
+#Redirect 301 / https://sanivel.ru/
 
 <IfModule mod_setenvif.c>
 	SetEnv TZ Europe/Moscow
@@ -43,4 +48,7 @@ ServerSignature Off
     AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript
 </ifModule>
 
+<<<<<<< HEAD
 #Redirect 301 / https://sanivel.ru/
+=======
+>>>>>>> cf0ed8b05b47a7fbe913fa085ce730fd5885cb6d
